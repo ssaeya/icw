@@ -1,0 +1,31 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: js-bff-service
+  thymeleaf:
+    prefix: classpath:/static/html/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - "*"
+
+api:
+  account:
+    url: http://localhost:8090/account
+  accountbank:
+    url: http://localhost:8090/accountbank
+  cart:
+    url: http://localhost:8090/cart
+  category:
+    url: http://localhost:8090/category
+  order:
+    url: http://localhost:8090/order
+  payment:
+    url: http://localhost:8090/payment
+  product:
+    url: http://localhost:8090/product

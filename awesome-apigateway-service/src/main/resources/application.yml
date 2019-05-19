@@ -1,0 +1,36 @@
+server:
+  port: 8090
+
+spring:
+  application:
+    name: awesome-apigateway-service
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - "*"
+
+zuul:
+  routes:
+    js-account-service:
+      service-id: js-account-service
+      url: http://localhost:8180
+      path: /account/**
+    js-cart-service:
+      service-id: js-cart-service
+      url: http://localhost:8181
+      path: /cart/**
+    js-order-service:
+      service-id: js-order-service
+      url: http://localhost:8182
+      path: /order/**
+    js-payment-service:
+      service-id: js-payment-service
+      url: http://localhost:8183
+      path: /payment/**
+    js-product-service:
+      service-id: js-product-service
+      url: http://localhost:8184
+      path: /product/**
