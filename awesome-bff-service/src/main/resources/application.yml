@@ -6,6 +6,12 @@ spring:
     name: js-bff-service
   thymeleaf:
     prefix: classpath:/static/html/
+  session:
+    store-type: redis
+#    spring.session.store-type=redis
+  redis:
+    host: 192.168.99.100
+    port: 6379
 
 management:
   endpoints:
@@ -16,16 +22,16 @@ management:
 
 api:
   account:
-    url: http://192.168.99.100:8090/account
+    url: http://localhost:8090/account
   accountbank:
-    url: http://192.168.99.100:8090/accountbank
+    url: http://localhost:8090/accountbank
   cart:
-    url: http://192.168.99.100:8090/cart
+    url: http://localhost:8090/cart
   category:
-    url: http://192.168.99.100:8090/category
+    url: http://localhost:8090/category
   order:
-    url: http://192.168.99.100:8090/order
+    url: http://localhost:8090/order
   payment:
-    url: http://192.168.99.100:8090/payment
+    url: http://localhost:8090/payment
   product:
-    url: http://192.168.99.100:8090/product
+    url: http://localhost:8090/product
