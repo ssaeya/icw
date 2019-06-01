@@ -16,12 +16,16 @@ import com.skcc.account.event.message.AccountEventType;
 import com.skcc.account.event.message.AccountPayload;
 import com.skcc.account.publish.AccountPublish;
 import com.skcc.account.repository.AccountMapper;
+import com.skcc.account.repository.AccountRepository;
 
 @Service
 public class AccountService {
 	
 	private AccountMapper accountMapper;
 	private AccountPublish accountPublish;
+	
+	@Autowired
+	private AccountRepository accountRepository;
 	
 	@Autowired
 	private AccountService accountService;
@@ -57,7 +61,8 @@ public class AccountService {
 	}
 	
 	public Account findById(long id) {
-		return this.accountMapper.findById(id);
+//		return this.accountMapper.findById(id);
+		return this.accountRepository.findById(id);
 	}
 	
 	public Account findByUsername(String username) {

@@ -10,6 +10,10 @@ domain:
 spring:
   application:
     name: awesome-account-service
+  jpa:
+    hibernate.ddl-auto: create
+    show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
   datasource:
     platform: h2
     url: jdbc:h2:mem:testdb;
