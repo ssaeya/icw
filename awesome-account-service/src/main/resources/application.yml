@@ -32,7 +32,7 @@ spring:
           environment:
             spring:
               rabbitmq:
-                host: 192.168.99.100
+                host: 52.79.63.17
                 port: 5672
                 username: labs
                 password: awesome-rabbitmq
