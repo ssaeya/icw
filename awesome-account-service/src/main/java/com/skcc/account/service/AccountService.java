@@ -21,7 +21,10 @@ import com.skcc.account.repository.AccountRepository;
 @Service
 public class AccountService {
 	
+	@Autowired
 	private AccountMapper accountMapper;
+	
+	@Autowired
 	private AccountPublish accountPublish;
 	
 	@Autowired
@@ -34,8 +37,8 @@ public class AccountService {
 	private String domainName;
 	
 	@Autowired
-	public AccountService(AccountMapper accountMapper, AccountPublish accountPublish) {
-		this.accountMapper = accountMapper;
+	public AccountService(AccountRepository accountRepository, AccountPublish accountPublish) {
+		this.accountRepository = accountRepository;
 		this.accountPublish = accountPublish;
 	}
 	
@@ -66,7 +69,7 @@ public class AccountService {
 	}
 	
 	public Account findByUsername(String username) {
-		return this.accountMapper.findByUsername(username);
+		return this.accountRepository.findByUsername(username);
 	}
 	
 	public boolean createAccountAndCreatePublishEvent(Account account) {
@@ -135,7 +138,7 @@ public class AccountService {
 	}
 		
 	public Account createAccount(Account account) {
-		this.accountMapper.createAccount(account); 
+		account = this.accountRepository.save(account); 
 		return account;
 	}
 
