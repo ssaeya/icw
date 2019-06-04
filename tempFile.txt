@@ -1,0 +1,5 @@
+1. IAM Role 생성
+2. EKS 클러스터 VPC 생성
+ - SecurityGroups 값 : sg-06a43e806e3134481
+ - VPCid : vpc-00c89b89ffce890a2
+ - Subnetid : subnet-040d1e565c6ac6de3,subnet-03ccc5ecfe7f7327e,subnet-0b6d2982fee9b8378
