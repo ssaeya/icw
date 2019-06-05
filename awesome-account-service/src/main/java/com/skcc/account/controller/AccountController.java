@@ -2,6 +2,9 @@ package com.skcc.account.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +33,33 @@ public class AccountController {
 	}
 	
 	@PostMapping(value="/login")
-	public Account login(@RequestBody Account account) {
-		return accountService.login(account);
+	public Account login(HttpServletRequest request, @RequestBody Account account) throws Exception {
+		
+		HttpSession session = request.getSession();
+
+		if (session.getAttribute("username") != null) {
+			session.removeAttribute("id");
+			session.removeAttribute("username");
+			session.removeAttribute("name");
+			session.removeAttribute("mobile");
+			session.removeAttribute("address");
+			session.removeAttribute("scope");
+		}
+
+		Account resultAccount = this.accountService.login(account);
+		
+		if(resultAccount.getUsername() != null) {
+			session.setAttribute("id", resultAccount.getId());
+			session.setAttribute("username", resultAccount.getUsername());
+			session.setAttribute("name", resultAccount.getName());
+			session.setAttribute("mobile", resultAccount.getMobile());
+			session.setAttribute("address", resultAccount.getAddress());
+			session.setAttribute("scope", resultAccount.getScope());
+		} else {
+			throw new Exception();
+		}
+		
+		return resultAccount;
 	}
 	
 	@GetMapping(value="/accounts/{id}")

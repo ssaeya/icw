@@ -10,6 +10,12 @@ domain:
 spring:
   application:
     name: awesome-account-service
+  session:
+    store-type: redis
+#    spring.session.store-type=redis
+  redis:
+    host: 34.211.184.139
+    port: 6379
   jpa:
     hibernate.ddl-auto: create
     show-sql: true
